@@ -29,13 +29,13 @@ class SinglyLinkedList {
     return this;
   }
 
-  traverse() {
-    let current = this.head;
-    while (current) {
-      console.log(current.val);
-      current = current.next;
-    }
-  }
+  // traverse() {
+  //   let current = this.head;
+  //   while (current) {
+  //     console.log(current.val);
+  //     current = current.next;
+  //   }
+  // }
 
   pop() {
     if (!this.head) {
@@ -73,9 +73,41 @@ class SinglyLinkedList {
     }
     return temp;
   }
+  // add value at beginning
+  unshift(val) {
+    let newNode = new Node(val);
+
+    // if list is empty
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  get(index) {
+    if (index >= this.length || index < 0) {
+      return null;
+    }
+    let counter = 0;
+    let current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
 }
 
 let list = new SinglyLinkedList();
 list.push('hi');
 list.push('from');
 list.push('me');
+list.unshift('first.');
+list.push('last of the list.');
+
+console.log(list.get(4));
