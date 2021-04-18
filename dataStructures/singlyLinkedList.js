@@ -58,22 +58,24 @@ class SinglyLinkedList {
     }
     return current;
   }
+  // remove first item
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+    let temp = this.head;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+    }
+    return temp;
+  }
 }
 
 let list = new SinglyLinkedList();
 list.push('hi');
 list.push('from');
 list.push('me');
-
-list.traverse();
-console.log(list.pop());
-
-// console.log(list);
-// let a = new Node(1);
-// let b = new Node(2);
-// a.next = b;
-// let c = new Node(3);
-// a.next.next = c;
-// console.log(a);
-// console.log(a.next);
-// console.log(a.next.next);
