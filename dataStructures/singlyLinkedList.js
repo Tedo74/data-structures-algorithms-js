@@ -133,6 +133,24 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+    if (index === 0) {
+      return this.shift();
+    }
+    if (index === this.length - 1) {
+      return this.pop();
+    }
+    let prev = this.get(index - 1);
+    let nodeToDelete = prev.next;
+    let tempNext = nodeToDelete.next;
+    prev.next = tempNext;
+    this.length--;
+    return nodeToDelete;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -142,8 +160,13 @@ list.push('me');
 list.unshift('first');
 list.push('last of the list.');
 list.set(4, 'last');
+// console.log(`remove ${0} element-----> `, list.remove(0));
 
 console.log('insert:---> ', list.insert(3, 'INSERTED'));
 console.log('insert:---> ', list.insert(9, 'INSERTED'));
 
+list.traverse();
+// list.remove(2);
+console.log(`remove ${2} element-----> `, list.remove(2));
+console.log('***************!!!!!!!!!!!!!!*****************');
 list.traverse();
