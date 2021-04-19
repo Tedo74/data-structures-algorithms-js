@@ -29,13 +29,13 @@ class SinglyLinkedList {
     return this;
   }
 
-  // traverse() {
-  //   let current = this.head;
-  //   while (current) {
-  //     console.log(current.val);
-  //     current = current.next;
-  //   }
-  // }
+  traverse() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
 
   pop() {
     if (!this.head) {
@@ -101,13 +101,49 @@ class SinglyLinkedList {
     }
     return current;
   }
+  set(index, value) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = value;
+      return true;
+    }
+    return false;
+  }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+
+    if (index === 0) {
+      this.unshift(value);
+      return true;
+    }
+
+    if (index === this.length) {
+      this.push(value);
+      return true;
+    }
+
+    let prevNode = this.get(index - 1);
+    let nextForNewNode = prevNode.next;
+    let newNode = new Node(value);
+    prevNode.next = newNode;
+    newNode.next = nextForNewNode;
+    this.length++;
+    return true;
+  }
 }
 
 let list = new SinglyLinkedList();
 list.push('hi');
 list.push('from');
 list.push('me');
-list.unshift('first.');
+list.unshift('first');
 list.push('last of the list.');
+list.set(4, 'last');
 
-console.log(list.get(4));
+console.log('insert:---> ', list.insert(3, 'INSERTED'));
+console.log('insert:---> ', list.insert(9, 'INSERTED'));
+
+list.traverse();
