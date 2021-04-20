@@ -151,22 +151,58 @@ class SinglyLinkedList {
     this.length--;
     return nodeToDelete;
   }
+
+  reverse() {
+    //  swap tail and head
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    // reverse other items
+    let next;
+    let prev = null;
+    while (current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+  }
+  reverseTwo() {
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    // at first step current points to old head, wich now is this.TAIL
+    let temp = null;
+    let latest = null;
+
+    for (let i = 0; i < this.length; i++) {
+      //at first step current.next points to old this.HEAD.next /second element/
+      temp = current.next;
+      // at first step current===this.tail this.tail.next = null/latest is null/
+      current.next = latest;
+      latest = current;
+      //at first step, now current = points to second element
+      current = temp;
+    }
+  }
 }
 
 let list = new SinglyLinkedList();
-list.push('hi');
-list.push('from');
-list.push('me');
-list.unshift('first');
-list.push('last of the list.');
-list.set(4, 'last');
+list.push(1);
+list.push(2);
+list.push(3);
+// list.unshift('first');
+list.push(4);
+// list.set(4, 'last');
 // console.log(`remove ${0} element-----> `, list.remove(0));
 
-console.log('insert:---> ', list.insert(3, 'INSERTED'));
-console.log('insert:---> ', list.insert(9, 'INSERTED'));
+// console.log('insert:---> ', list.insert(3, 'INSERTED'));
+// console.log('insert:---> ', list.insert(9, 'INSERTED'));
 
 list.traverse();
-// list.remove(2);
-console.log(`remove ${2} element-----> `, list.remove(2));
+// // list.remove(2);
+// // console.log(`remove ${2} element-----> `, list.remove(2));
+list.reverse();
 console.log('***************!!!!!!!!!!!!!!*****************');
+
 list.traverse();
