@@ -47,6 +47,25 @@ class DoublyLinkedList {
     itemToReturn.prev = null;
     return itemToReturn;
   }
+  // remove first item
+  shift() {
+    // if list is empty
+    if (!this.head) {
+      return undefined;
+    }
+    let oldHead = this.head;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let newHead = oldHead.next;
+      this.head = newHead;
+    }
+    oldHead.next = null;
+    this.length--;
+    return oldHead;
+  }
 
   traverse() {
     let current = this.head;
@@ -58,17 +77,21 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
-// console.log(list.push(1));
-// console.log(list.push(2));
-// console.log(list.push(3));
-list.push(1);
-list.push(2);
-list.push(3);
+console.log(list.push(1));
+console.log(list.push(2));
+console.log(list.push(3));
+// list.shift();
+console.log('shifted ---->', list.shift());
+console.log('shifted ---->', list.shift());
+console.log('shifted ---->', list.shift());
+console.log('shifted ---->', list.shift());
+// list.shift();
+// list.shift();
+console.log('************************');
 list.traverse();
-console.log('************************');
-console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
-console.log('************************');
+// console.log(list.pop());
+// console.log('************************');
 // console.log(list);
