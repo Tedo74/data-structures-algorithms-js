@@ -44,6 +44,7 @@ class DoublyLinkedList {
       this.tail = prevNode;
     }
     this.length--;
+    itemToReturn.prev = null;
     return itemToReturn;
   }
 
@@ -66,8 +67,8 @@ list.push(3);
 list.traverse();
 console.log('************************');
 console.log(list.pop());
-console.log(list.pop());
+// console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
 console.log('************************');
-list.traverse();
+// console.log(list);
