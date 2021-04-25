@@ -18,7 +18,7 @@ function reverse(str) {
     // return [...str].reverse().join('');
 
     // solution 3 - reduce!
-    return str.split('').reduce((acc, curr)=>acc=curr+acc,'')
+    return str.split('').reduce((acc, curr)=>acc=curr+acc,'');
 
 }
 console.log(reverse("abc   *"));
