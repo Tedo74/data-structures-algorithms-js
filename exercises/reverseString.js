@@ -15,6 +15,13 @@ function reverse(str) {
     // return returnStr;
 
     // solution 2
-    return [...str].reverse().join('');
+    // return [...str].reverse().join('');
+
+    // solution 3 - reduce!
+    return str.split('').reduce((acc, curr)=>{
+       let string = curr+acc;
+       return string
+    },'')
+
 }
 console.log(reverse("abc   *"));
