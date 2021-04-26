@@ -67,6 +67,21 @@ class DoublyLinkedList {
     return oldHead;
   }
 
+  // add item to be first in list (head)
+  unshift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
   traverse() {
     let current = this.head;
     while (current) {
@@ -80,16 +95,16 @@ const list = new DoublyLinkedList();
 console.log(list.push(1));
 console.log(list.push(2));
 console.log(list.push(3));
-// list.shift();
-console.log('shifted ---->', list.shift());
-console.log('shifted ---->', list.shift());
-console.log('shifted ---->', list.shift());
-console.log('shifted ---->', list.shift());
+// // list.shift();
+// console.log('shifted ---->', list.shift());
+// console.log('shifted ---->', list.shift());
+// console.log('shifted ---->', list.shift());
+// console.log('shifted ---->', list.shift());
 // list.shift();
 // list.shift();
 console.log('************************');
+console.log(list.unshift('new unshifted value here.'));
 list.traverse();
-// console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
