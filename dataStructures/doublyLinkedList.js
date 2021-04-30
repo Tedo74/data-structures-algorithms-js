@@ -82,6 +82,32 @@ class DoublyLinkedList {
     return this;
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+
+    let current = this.head;
+    if (index <= this.length / 2) {
+      let count = 0;
+      while (index != count) {
+        current = current.next;
+        count++;
+      }
+      console.log('left');
+    } else {
+      current = this.tail;
+      let count = this.length - 1;
+      while (index < count) {
+        current = current.prev;
+        count--;
+      }
+      console.log('right');
+    }
+
+    return current;
+  }
+
   traverse() {
     let current = this.head;
     while (current) {
@@ -92,9 +118,18 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
-console.log(list.push(1));
-console.log(list.push(2));
-console.log(list.push(3));
+// console.log(list.push(1));
+// console.log(list.push(2));
+// console.log(list.push(3));
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+list.push(5);
+list.push(6);
+list.push(7);
+list.push(8);
+console.log(list.get(4));
 // // list.shift();
 // console.log('shifted ---->', list.shift());
 // console.log('shifted ---->', list.shift());
@@ -102,9 +137,9 @@ console.log(list.push(3));
 // console.log('shifted ---->', list.shift());
 // list.shift();
 // list.shift();
-console.log('************************');
-console.log(list.unshift('new unshifted value here.'));
-list.traverse();
+// console.log('************************');
+// console.log(list.unshift('new unshifted value here.'));
+// list.traverse();
 // console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
