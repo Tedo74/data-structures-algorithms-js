@@ -108,6 +108,15 @@ class DoublyLinkedList {
     return current;
   }
 
+  set(index, value) {
+    let node = this.get(index);
+    if (node !== null) {
+      node.val = value;
+      return true;
+    }
+    return false;
+  }
+
   traverse() {
     let current = this.head;
     while (current) {
@@ -124,12 +133,8 @@ const list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.push(4);
-list.push(5);
-list.push(6);
-list.push(7);
-list.push(8);
-console.log(list.get(4));
+
+// console.log(list.get(4));
 // // list.shift();
 // console.log('shifted ---->', list.shift());
 // console.log('shifted ---->', list.shift());
@@ -139,7 +144,11 @@ console.log(list.get(4));
 // list.shift();
 // console.log('************************');
 // console.log(list.unshift('new unshifted value here.'));
-// list.traverse();
+list.set(0, 10);
+list.set(1, 11);
+list.set(2, 12);
+list.set(3, 13);
+list.traverse();
 // console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
