@@ -1,28 +1,20 @@
 function bubleSort(arr) {
-  function swap(index1, index2) {
-    let temp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = temp;
-  }
-
-  let swapped = false;
-  let end = arr.length - 1;
-
-  for (let i = end; i >= 0; i--) {
+  let swapped;
+  for (let i = arr.length; i >= 0; i--) {
     swapped = false;
 
-    for (let j = 0; j < arr.length - 1; j++) {
+    for (let j = 0; j < i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        swap(j, j + 1);
+        [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
         swapped = true;
       }
     }
-    end--;
+    if (!swapped) {
+      return arr;
+    }
   }
 
   return arr;
 }
 
-function bubleOptimized() {}
-
-console.log(bubleSort([21, 3, 18, 2, 1]));
+console.log(bubleSort([1, 5, 2, 8, 3, 9, 10]));
